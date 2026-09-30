@@ -1,0 +1,194 @@
+/* Latihan 1: element type selector dan grouped selector. */
+h1,
+h2 {
+    color: #4a2c1e;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: black;
+}
+
+em {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Latihan 4: contoh cascade dan specificity. */
+#promo p {
+    color: darkred;
+}
+
+.kartu p.harga {
+    color: green;
+}
+
+p.harga {
+    color: blue;
+}
+
+/* Latihan 5: box model, rem, em, dan viewport unit. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f6eadf;
+    color: #33251f;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.halaman {
+    min-height: 100vh;
+}
+
+header {
+    padding: 2rem 5vw;
+    background: #4a2c1e;
+    color: #f6eadf;
+}
+
+header p {
+    color: inherit;
+}
+
+nav a {
+    display: inline-block;
+    margin: 0 0.75rem;
+    color: #f6eadf;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+}
+
+.label,
+.asal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.banner {
+    width: 100vw;
+    min-height: 17rem;
+    display: grid;
+    align-items: center;
+    padding: 3rem 5vw;
+    background: #d6a76c;
+}
+
+.banner h2 {
+    max-width: 36rem;
+    margin: 0.4rem 0;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+section.produk {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 4rem 5vw;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+.produk > h2 {
+    margin-top: 0;
+}
+
+.sambutan,
+.kontak {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 5rem 5vw;
+}
+
+.sambutan h2,
+.kontak h2 {
+    max-width: 42rem;
+    margin: 0.5rem 0 1rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.tombol {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: #8b1e1e;
+    color: #fffaf5;
+    text-decoration: none;
+}
+
+.info-kontak {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.info-kontak > div {
+    padding: 1.5rem;
+    border-left: 4px solid #d6a76c;
+    background: #fffaf5;
+}
+
+.daftar-kartu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 1.25rem;
+}
+
+.kartu {
+    width: 20rem;
+    max-width: 100%;
+    min-height: 18rem;
+    padding: 1.5rem;
+    border: 1px solid #d6a76c;
+    border-radius: 0.5rem;
+    background: #fffaf5;
+    box-shadow: 0 0.75rem 1.5rem rgb(74 44 30 / 10%);
+}
+
+.kartu h2 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.5em;
+}
+
+.kartu .harga {
+    margin: 0 0 1rem;
+    color: #8b1e1e;
+    font-weight: 700;
+}
+
+.kartu em {
+    display: block;
+    margin-top: 1.25rem;
+}
+
+.asal {
+    color: #8b1e1e;
+}
+
+footer {
+    padding: 2.5rem 5vw;
+    background: #33251f;
+    color: #f6eadf;
+}
+
+footer h2,
+footer p {
+    color: inherit;
+}
+
+@media (max-width: 24rem) {
+    .kartu {
+        width: 100%;
+    }
+}

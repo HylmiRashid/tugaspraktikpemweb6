@@ -1,0 +1,219 @@
+JAWABAN SINGKAT LATIHAN PERTEMUAN 6
+Studi Kasus: Kedai Kopi Nusantara
+
+File praktik:
+- index.html: halaman Beranda.
+- menu.html: halaman Menu.
+- kontak.html: halaman Kontak.
+- styles.css: CSS yang dipakai bersama.
+
+LATIHAN 1 - RULE CSS DAN SELECTOR
+
+a. Rule dasarnya:
+
+h1 {
+    color: #4A2C1E;
+}
+
+h2 {
+    color: #4A2C1E;
+}
+
+p {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+em {
+    color: gray;
+    font-style: italic;
+}
+
+Alasannya, h1 dan h2 dibuat cokelat agar sesuai dengan tema kedai. Paragraf
+memakai sans-serif supaya mudah dibaca. Tag em dibuat miring dan abu-abu agar
+terlihat sebagai catatan tambahan.
+
+b. Karena warna h1 dan h2 sama, rule-nya bisa digabung:
+
+h1, h2 {
+    color: #4A2C1E;
+}
+
+Grouped selector lebih singkat dan tidak mengulang deklarasi. Kalau warnanya
+diubah, cukup mengubah satu tempat.
+
+c. h1, h2, p, dan em adalah element type selector karena memilih elemen dari
+nama tag-nya. Artinya, rule berlaku untuk semua tag dengan nama tersebut.
+
+Kalau hanya ingin mengubah h1 di dalam header, bisa digunakan:
+
+#header-utama h1 {
+    color: #4A2C1E;
+}
+
+ID cocok untuk elemen yang unik. Class cocok untuk beberapa elemen yang ingin
+diberi gaya sama, misalnya .judul-header h1.
+
+
+LATIHAN 2 - CARA MEMASANG CSS
+
+a. Contoh inline CSS pada promo:
+
+<p style="color: darkred;">Diskon 20% untuk pembelian kopi Nusantara pilihan.</p>
+
+Inline cocok untuk satu elemen, tetapi kurang praktis kalau dipakai berkali-kali.
+
+b. Contoh internal CSS di index.html:
+
+<style>
+    header {
+        text-align: center;
+    }
+
+    .sambutan {
+        text-align: left;
+    }
+</style>
+
+Internal CSS cocok jika aturan hanya dipakai pada satu halaman.
+
+c. Contoh external CSS di styles.css:
+
+.kartu {
+    width: 20rem;
+    padding: 1.5rem;
+    border: 1px solid #D6A76C;
+    background: #FFFAF5;
+}
+
+File CSS dihubungkan ke HTML dengan:
+
+<link rel="stylesheet" href="styles.css">
+
+d. Untuk Kedai Kopi Nusantara, external CSS adalah pilihan terbaik karena semua
+halaman memakai tampilan yang sama. Kalau warna atau ukuran diubah, cukup
+mengubah styles.css satu kali. Hasilnya lebih rapi dan mudah dirawat.
+
+
+LATIHAN 3 - INHERITANCE
+
+a. Struktur elemennya:
+
+section.produk
+|- div.daftar-kartu
+   |- div.kartu
+      |- h2
+      |- p.harga
+      |- p
+      |- em
+
+section.produk adalah parent dari div.daftar-kartu. div.kartu adalah descendant
+dari section.produk dan parent langsung dari h2, p.harga, p, serta em.
+
+b. Rule yang digunakan:
+
+section.produk {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+Font-family dan color diwariskan ke elemen di dalamnya. Jadi h2, p.harga, p,
+dan em bisa mengikuti font serta warna section.produk tanpa ditulis ulang.
+Inilah yang disebut inheritance atau pewarisan.
+
+c. Tidak semua properti diwariskan. Color dan font-family diwariskan karena
+biasanya ingin dibuat konsisten. Border tidak diwariskan karena semua isi kartu
+bisa mendapat garis sendiri dan tampilannya menjadi terlalu ramai. Border cukup
+diberikan pada .kartu:
+
+.kartu {
+    border: 1px solid #D6A76C;
+}
+
+
+LATIHAN 4 - CASCADE DAN SPECIFICITY
+
+Rule yang dibandingkan:
+
+p { color: black; }
+#promo p { color: red; }
+.kartu p.harga { color: green; }
+p.harga { color: blue; }
+
+a. Jika p berada di dalam #promo dan hanya dua rule pertama yang berlaku, warna
+akhirnya merah. #promo p memiliki ID selector, sedangkan p hanya memiliki
+element selector. ID lebih spesifik, sehingga menang.
+
+b. Untuk p class="harga" di dalam .kartu, rule yang menang adalah:
+
+.kartu p.harga { color: green; }
+
+Rule itu memiliki dua class dan satu element selector. p.harga hanya memiliki
+satu class dan satu element selector. Jadi warna akhirnya hijau, bukan biru.
+
+c. Kalau specificity kedua rule sama, rule yang ditulis paling akhir akan
+menang. Ini disebut rule order atau last declaration wins.
+
+d. Urutan sumber style dari yang paling rendah adalah:
+
+1. User agent style sheet, yaitu style bawaan browser.
+2. User style sheet, yaitu style dari pengguna atau extension.
+3. Author style sheet, yaitu style yang dibuat developer.
+
+Author style sheet paling terlihat karena developer memang membuat aturan
+tampilan halaman di sana. Pada tugas ini, file tersebut adalah styles.css.
+
+
+LATIHAN 5 - BOX MODEL DAN SATUAN CSS
+
+a. Rule lebar kartu:
+
+.kartu {
+    width: 20rem;
+}
+
+Jika 1rem = 16px, maka 20rem = 20 x 16px = 320px.
+
+b. Rule ukuran judul:
+
+.kartu h2 {
+    font-size: 1.5em;
+}
+
+em mengikuti ukuran font parent, sehingga nilainya bisa berubah jika ukuran
+parent berubah. rem mengikuti ukuran font root, yaitu html. Dengan root 16px,
+1.5rem selalu sama dengan 24px.
+
+c. Rule banner:
+
+.banner {
+    width: 100vw;
+}
+
+vw mengikuti lebar viewport. Jadi 100vw berarti selebar layar browser. Satuan
+ini lebih cocok daripada px karena banner tetap memenuhi layar saat ukuran
+browser berubah.
+
+d. Properti box model selain width yang digunakan adalah:
+
+- min-height untuk tinggi minimum;
+- padding untuk jarak isi dengan border;
+- border untuk garis pembatas;
+- margin untuk jarak di luar border.
+
+Pada .kartu juga ada border-radius dan box-shadow sebagai tambahan tampilan.
+
+e. Untuk memeriksa hasilnya, buka index.html atau menu.html di browser. Klik
+kanan kartu, pilih Inspect, lalu lihat bagian Computed atau Box Model. Di sana
+bisa dilihat width, padding, border, dan ukuran lainnya. Setelah itu ubah lebar
+browser untuk memastikan tampilannya tetap responsif.
+
+
+LOKASI KODE
+
+- Inline CSS: index.html, pada paragraf promo.
+- Internal CSS: index.html, di dalam tag <style>.
+- External CSS: styles.css, dipanggil dengan tag <link>.
+- Kartu produk: menu.html dan styles.css.
+- Informasi kontak: kontak.html.
+- Navigasi: ada di ketiga file HTML dan saling terhubung.
